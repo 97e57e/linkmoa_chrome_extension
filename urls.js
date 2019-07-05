@@ -48,7 +48,7 @@ function exceptionHandler(url){
 // Copying string value to Clipboard
 function copyStringToClipboard (str) {
     var tmp = document.createElement('textarea');
-    tmp.value = str;
+    tmp.value = str.slice(0,-1);
     tmp.setAttribute('readonly', '');
     document.body.appendChild(tmp);
     tmp.select();
