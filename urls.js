@@ -3,6 +3,7 @@ let urlList="";
 let copy = document.getElementById('copy');
 let reset = document.getElementById('reset');
 
+//Collect visited URLs
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   if(changeInfo.url) {
     saveUrls(tab.url);
@@ -16,10 +17,10 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 if(copy){
   copy.addEventListener('click',function(event){
     chrome.storage.local.get('urlList', function(items) {
-      alert("아래의 URL 목록을 클립보드에 복사했습니다.\n" + items.urlList);
-      var str="" + items.urlList;
+      alert("아래의 URL 목록을 클립보드에 복사했습니다.\n" + urlList);
+      var str="" + urlList;
+      console.log(str + "\n을 클립보드에 복사합니다.")
       copyStringToClipboard(str);
-      console.log(str);
     });
   });
 }
