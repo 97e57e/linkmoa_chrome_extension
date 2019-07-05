@@ -1,7 +1,7 @@
 {
-    "name": "Save URLs",
-    "description": "Save URLs",
-    "version": "0.7",
+    "name": "Moa Moa",
+    "description": "Moa Moa",
+    "version": "1.0",
     "permissions": [
             "tabs", "storage"
     ],

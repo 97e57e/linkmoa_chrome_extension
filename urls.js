@@ -1,8 +1,7 @@
 var urlList="";
-var h ="hihi";
-enable=false;
 
-let on = document.getElementById('on');
+let copy = document.getElementById('copy');
+let reset = document.getElementById('reset');
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   if(changeInfo.url) {
@@ -12,12 +11,21 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   } 
 });
 
-if(on){
-  on.addEventListener('click',function(event){
+if(copy){
+  copy.addEventListener('click',function(event){
     chrome.storage.local.get('urlList', function(items) {
-    alert(items.urlList);
-    copyStringToClipboard(items.urlList);
+      alert("아래의 URL 목록을 클립보드에 복사했습니다.\n" + items.urlList);
+      copyStringToClipboard(items.urlList);
     });
+  });
+}
+
+if(reset){
+  reset.addEventListener('click',function(event){
+    urlList=""
+    chrome.storage.local.set({'urlList': urlList}, function() {
+    });
+    alert("저장된 URL 목록을 초기화 했습니다.");
   });
 }
 
